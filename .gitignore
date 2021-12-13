@@ -2,4 +2,6 @@
 venv
 generator_notebooks/Ch1/*
 generator_notebooks/Ch2/*
+generator_notebooks/.ipynb_checkpoints/
+generator_notebooks/.ipynb_checkpoints/*
 generator_notebooks/Ch3/*

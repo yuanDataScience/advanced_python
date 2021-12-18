@@ -1,3 +1,0 @@
-this is the header 
-this is body
-this is the footer 

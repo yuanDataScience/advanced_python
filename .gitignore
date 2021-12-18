@@ -1,7 +1,7 @@
 .idea/*
 venv
-generator_notebooks/Ch1/*
-generator_notebooks/Ch2/*
-generator_notebooks/.ipynb_checkpoints/
-generator_notebooks/.ipynb_checkpoints/*
-generator_notebooks/Ch3/*
+notebooks/Ch1/*
+notebooks/Ch2/*
+notebooks/.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/*
+notebooks/Ch3/*

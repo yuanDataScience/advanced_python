@@ -1,5 +1,7 @@
 .idea/*
-__pycache__/*
+__pycache__/
+notebooks/__pycache__/
+*.pyc
 venv
 notebooks/Ch1/*
 notebooks/Ch2/*

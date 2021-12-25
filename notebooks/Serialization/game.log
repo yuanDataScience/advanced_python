@@ -1,3 +1,4 @@
 INFO:root:p1 is Player(1, 'Parzival', {'copper', 'jade'})
 INFO:root:p1 is Player(1, 'Parzival', {'jade', 'copper'})
 INFO:root:p1 is Player(1, 'Parzival', {'copper', 'jade'})
+INFO:root:p1 is Player(1, 'Parzival', {'jade', 'copper'})

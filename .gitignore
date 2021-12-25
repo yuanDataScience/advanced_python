@@ -7,4 +7,6 @@ notebooks/Ch1/*
 notebooks/Ch2/*
 notebooks/.ipynb_checkpoints/
 notebooks/.ipynb_checkpoints/*
+.ipynb*/
+.Rhistory
 notebooks/Ch3/*

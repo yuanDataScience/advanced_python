@@ -1,0 +1,14 @@
+.idea/*
+__pycache__/
+notebooks/__pycache__/
+*.pyc
+venv
+notebooks/Ch1/*
+notebooks/Ch2/*
+notebooks/.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/*
+.ipynb*/
+.Rhistory
+notebooks/design*/
+noteooks/asynchronous/
+notebooks/Ch3/*

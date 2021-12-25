@@ -9,4 +9,6 @@ notebooks/.ipynb_checkpoints/
 notebooks/.ipynb_checkpoints/*
 .ipynb*/
 .Rhistory
+notebooks/design*/
+noteooks/asynchronous/
 notebooks/Ch3/*

@@ -75,7 +75,8 @@ class AWSClient():
         self._chunk_size = chunk_size
 
     @staticmethod
-    def _chunks(iterable: Iterable, n=100):
+    # reference from https://stackoverflow.com/a/34935239/58981
+    def _chunk_messages(iterable: Iterable, n=100):
         """
         separate the input interable into chunks, with the size of the chunk defined by n (default=100)
         This function uses generator to process items from input iterables with efficient memory usage
@@ -98,7 +99,8 @@ class AWSClient():
                 print("FAILURE FOR API::{}".format(self._api_url))
             return rs
 
-    async def _get_results_by_api(self, input_data_blocks):
+    # reference from https://kimmosaaskilahti.fi/blog/2021-01-03-asyncio-workers/
+    async def _get_api_async(self, input_data_blocks):
         """
         This coroutine invokes Rest API and send input data chunks using multi-threads
         in each thread, a chunk of data is sent to API
@@ -141,7 +143,7 @@ class AWSClient():
             logger.error(e)
             return None
 
-    async def _get_results_by_lambda(self, input_data_chunks):
+    async def _get_lambda_async(self, input_data_chunks):
         """
         This coroutine invokes Rest API and send input data chunks using multi-threads
         in each thread, a chunk of data is sent to API
@@ -163,6 +165,7 @@ class AWSClient():
             for response in await asyncio.gather(*tasks):
                 rs.append(response)
 
+    # reference from https://www.youtube.com/watch?v=IEEhzQoKtQU
     def _get_lambda_multi_threads(self, input_params):
         """
         This function process the input_parameters by muti-threads using submit function
@@ -192,7 +195,7 @@ class AWSClient():
         :return:             Return the list of results
         """
         loop = asyncio.get_event_loop()
-        future = asyncio.ensure_future(self._get_results_by_api(input_params))
+        future = asyncio.ensure_future(self._get_api_async(input_params))
         return loop.run_until_complete(future)
 
     def _call_lambda(self, input_params):
@@ -202,7 +205,7 @@ class AWSClient():
         :return:             Return the list of results
         """
         loop = asyncio.get_event_loop()
-        future = asyncio.ensure_future(self._get_results_by_lambda(input_params))
+        future = asyncio.ensure_future(self._get_lambda_async(input_params))
         return loop.run_until_complete(future)
 
     def request_by_lambda(self, messages: Union[List[str], TextIO], no_async: bool = False,
@@ -214,7 +217,7 @@ class AWSClient():
         :param no_output: Return results or not
         :return:          Pandas DataFrame, or None
         """
-        chunked_list = AWSClient._chunks(messages, self._chunk_size)
+        chunked_list = AWSClient._chunk_messages(messages, self._chunk_size)
 
         if no_async:
             results = self._get_lambda_multi_threads(chunked_list)
@@ -234,7 +237,7 @@ class AWSClient():
         :param no_output:  Return results or not
         :return:           Pandas DataFrame, or None
         """
-        chunked_list = AWSClient._chunks(messages, self._chunk_size)
+        chunked_list = AWSClient._chunk_messages(messages, self._chunk_size)
         results = functools.reduce(operator.iconcat, self._call_rest_api(chunked_list), [])
 
         if no_output:
@@ -243,18 +246,3 @@ class AWSClient():
             return pd.DataFrame(results)
 
 
-if __name__ == "__main__":
-    ac = AWSClient("api_url", "lambda_arn")
-
-    print(ac.max_worker)
-    print(ac.lambda_arn)
-    print(ac.api_url)
-    print(ac.chunk_size)
-    ac.max_worker = 50
-    ac.api_url = "api_url_2"
-    ac.lambda_arn = "lambda2"
-    ac.chunk_size = 100
-    print(ac.max_worker)
-    print(ac.lambda_arn)
-    print(ac.api_url)
-    print(ac.chunk_size)

@@ -28,7 +28,6 @@ class AWSClient():
         self._max_worker = max_worker
         self._chunk_size = chunk_size
 
-
         # set stdout handler
         stdout_handler = logging.StreamHandler(sys.stdout)
         stdout_handler.setLevel(logging.INFO)
@@ -243,6 +242,7 @@ class AWSClient():
         else:
             return pd.DataFrame(results)
 
+
 if __name__ == "__main__":
     ac = AWSClient("api_url", "lambda_arn")
 
@@ -258,7 +258,3 @@ if __name__ == "__main__":
     print(ac.lambda_arn)
     print(ac.api_url)
     print(ac.chunk_size)
-
-
-
-

@@ -1,0 +1,7 @@
+2021-12-28 12:48:27,203:__main__:Tried to divide by zero
+Traceback (most recent call last):
+  File "/tmp/ipykernel_24623/2787673039.py", line 38, in divide
+    result = x / y
+ZeroDivisionError: division by zero
+2021-12-28 13:03:11,388:__main__:Tried to divide by zero
+2021-12-28 13:03:11,388:__main__:Tried to divide by zero

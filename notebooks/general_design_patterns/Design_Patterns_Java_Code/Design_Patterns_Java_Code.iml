@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/02_StrategyPattern" isTestSource="false" packagePrefix="headfirst.designpatterns.strategy" />
+      <sourceFolder url="file://$MODULE_DIR$/03_AdapterPattern" isTestSource="false" packagePrefix="headfirst.designpatterns.adapter" />
+      <sourceFolder url="file://$MODULE_DIR$/04_ObserverPattern" isTestSource="false" packagePrefix="headfirst.designpatterns.observer" />
+      <sourceFolder url="file://$MODULE_DIR$/05_DecoratorPattern" isTestSource="false" packagePrefix="headfirst.designpatterns.decorator" />
+      <sourceFolder url="file://$MODULE_DIR$/06_IteratorPattern" isTestSource="false" packagePrefix="headfirst.designpatterns.iterator" />
+      <sourceFolder url="file://$MODULE_DIR$/07_FactoryPattern" isTestSource="false" packagePrefix="headfirst.designpatterns.factory" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
